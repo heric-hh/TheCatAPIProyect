@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
  * @author hheri
  */
 public class GatoService {
+
+    
     // Renderizar imagen
     public void desplegarImagen( Gato unGato, ImageIcon img ) throws IOException {
         String menu = "Opciones: \n"
@@ -69,6 +71,12 @@ public class GatoService {
         System.out.println("Gato id: " + gato.getId());
         System.out.println("Gato url: " + gato.getUrl());
         
+        /* Comienzo del código para el stack*/
+        System.out.println("--- Gato guardado en el stack ---");
+       
+        
+        /* Final del código para el stack */
+        
         Image image = null;
         try{
             URL url = new URL(gato.getUrl());
@@ -87,6 +95,7 @@ public class GatoService {
         } catch ( Exception e ) {
             System.out.println("No se pudo crear el objeto Image");
         }
+        
         return gato;
     }
 }

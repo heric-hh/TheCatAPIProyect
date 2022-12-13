@@ -1,6 +1,7 @@
 package com.mycompany.gatosapi;
 
 import java.io.IOException;
+import java.util.Stack;
 import javax.swing.JOptionPane;
 
 /**
@@ -8,15 +9,26 @@ import javax.swing.JOptionPane;
  * @author hheri
  */
 public class GatosAPI {
+    
+    public static Stack<Gato> stackGatos = new Stack<>();
+    
+    public static void mostrarGato() {
+        Gato g = stackGatos.peek();
+        System.out.println("ID: " + g.getId() + "\nURL: " + g.getUrl());
+    }
 
     public static void main(String[] args) throws IOException {
         GatoService catService = new GatoService();
-        catService.getGatos();
+        //catService.getGatos();
+        
+        
         
         int opcionMenu = -1;
         String[] opciones = {
             "1. Ver Gatos",
-            "2. Salir"
+            "2. Ver Último Gato",
+            "3. Checar si el Stack está vacío",
+            "4. Salir"
         };
         
         do {
@@ -35,13 +47,15 @@ public class GatosAPI {
             GatoService service = new GatoService();
             
             switch ( opcionMenu ) {
-                case 0: 
+                case 0 -> { 
                     System.out.println("Vas a ver a un gato.");
-                    service.getGatos();
-                    break;
-                case 1:
-                    System.out.println("Vas a salir del sistema.");
+                    Gato g = service.getGatos();
+                    stackGatos.push(g);
+                }
+                case 1 -> mostrarGato();
+                case 2 -> System.out.println(stackGatos.empty());
+                case 3 -> System.out.println("Vas a salir del sistema.");
             }
-        } while ( opcionMenu != 2 );
+        } while ( opcionMenu != 3 );
     }
 }

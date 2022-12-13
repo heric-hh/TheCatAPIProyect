@@ -1,5 +1,6 @@
 package com.mycompany.gatosapi;
 
+
 /**
  *
  * @author hheri
@@ -32,6 +33,8 @@ public class Gato {
     public void setImage(String image) {
         this.image = image;
     }
+    
+   
     
     
 }
